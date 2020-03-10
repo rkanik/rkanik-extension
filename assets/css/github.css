@@ -1,0 +1,43 @@
+body {
+   background-color: #202124 !important;
+}
+.Header,
+.user-profile-nav,
+.Box {
+   background-color: #292a2d !important;
+}
+
+.Header {
+   box-shadow: 0 2px 3px #1c1d1f;
+}
+
+.Box,
+.user-profile-nav {
+   box-shadow: 1px 2px 3px #1c1d1f;
+   border: none !important;
+}
+.Box {
+   box-shadow: 1px 2px 3px #1c1d1f;
+   border: none !important;
+}
+.Box a {
+   color: unset !important;
+}
+.Box a .repo {
+   color: #009688 !important;
+}
+
+.UnderlineNav-item.selected,
+.UnderlineNav-item[aria-current],
+.UnderlineNav-item[role="tab"][aria-selected="true"] {
+   color: #009688 !important;
+   border-bottom-color: #009688 !important;
+}
+
+@media (min-width: 768px) {
+   .avatar-before-user-status {
+      border: none !important;
+      border-radius: 50% !important;
+      box-shadow: 1px 2px 3px #1c1d1f;
+   }
+}
