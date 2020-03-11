@@ -20,7 +20,8 @@
          ],
          "css": [
             "assets/css/style.css",
-            "assets/css/github.css"
+            "assets/css/github.css",
+            "assets/css/facebook.css"
          ]
       }
    ],
