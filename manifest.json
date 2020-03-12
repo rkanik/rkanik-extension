@@ -10,18 +10,22 @@
    "content_scripts": [
       {
          "matches": [
+            "https://www.google.com/*",
             "https://open.spotify.com/*",
             "https://www.facebook.com/*",
-            "https://github.com/*"
+            "https://github.com/*",
+            "https://drive.google.com/*"
          ],
          "js": [
             "js/app.js",
             "js/facebook.js"
          ],
          "css": [
+            "assets/css/google.css",
             "assets/css/style.css",
             "assets/css/github.css",
-            "assets/css/facebook.css"
+            "assets/css/facebook.css",
+            "assets/css/drive.css"
          ]
       }
    ],
