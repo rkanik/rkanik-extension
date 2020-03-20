@@ -1,0 +1,56 @@
+{
+   "name": "RK Anik",
+   "description": "RK Anik personal extension",
+   "version": "0.0.1",
+   "manifest_version": 2,
+   "permissions": [
+      "storage",
+      "declarativeContent",
+      "https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"
+   ],
+   "content_scripts": [
+      {
+         "matches": [
+            "https://www.google.com/*",
+            "https://open.spotify.com/*",
+            "https://www.facebook.com/*",
+            "https://github.com/*",
+            "https://drive.google.com/*",
+            "https://www.youtube.com/*",
+            "https://www.fiverr.com/*"
+         ],
+         "js": [
+            "app.js"
+         ],
+         "css": [
+            "assets/css/style.css",
+            "assets/css/app.css"
+         ]
+      }
+   ],
+   "browser_action": {
+      "default_popup": "popup/index.html",
+      "default_icon": {
+         "24": "assets/icons/icon_24.png",
+         "48": "assets/icons/icon_48.png",
+         "128": "assets/icons/icon_128.png"
+      }
+   },
+   "background": {
+      "scripts": [
+         "background.js"
+      ],
+      "persistent": true
+   },
+   "web_accessible_resources": [
+      "assets/icons/icon_24.png",
+      "assets/icons/icon_48.png",
+      "assets/icons/icon_128.png"
+   ],
+   "icons": {
+      "24": "assets/icons/icon_24.png",
+      "48": "assets/icons/icon_48.png",
+      "128": "assets/icons/icon_128.png"
+   }
+}

@@ -1,20 +1,35 @@
 {
-  "name": "RKAnik",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rkanik/rkanik-extension.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rkanik/rkanik-extension/issues"
-  },
-  "homepage": "https://github.com/rkanik/rkanik-extension#readme"
+   "name": "allinone-dark",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+      "serve": "vue-cli-service serve",
+      "build": "webpack --hide-modules",
+      "build-app": "vue-cli-service build",
+      "dev-watch": "nodemon --exec npm run build"
+   },
+   "dependencies": {
+      "core-js": "^3.6.4",
+      "vue": "^2.6.11",
+      "vue-router": "^3.1.5",
+      "vuex": "^3.1.2"
+   },
+   "devDependencies": {
+      "@vue/cli-plugin-babel": "^4.2.0",
+      "@vue/cli-plugin-router": "^4.2.0",
+      "@vue/cli-plugin-typescript": "^4.2.0",
+      "@vue/cli-plugin-vuex": "^4.2.0",
+      "@vue/cli-service": "^4.2.0",
+      "mini-css-extract-plugin": "^0.9.0",
+      "node-sass": "^4.12.0",
+      "nodemon": "^2.0.2",
+      "sass-loader": "^8.0.2",
+      "typescript": "~3.7.5",
+      "vue-template-compiler": "^2.6.11",
+      "webpack-cli": "^3.3.11"
+   },
+   "browserslist": [
+      "> 1%",
+      "last 2 versions"
+   ]
 }

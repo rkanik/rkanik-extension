@@ -1,0 +1,206 @@
+// Colors
+$bgPrimary: #202124;
+$bgSecondary: #292a2d;
+$textPrimary: #bdbdbd;
+$textSecondary: #757575;
+$shadow: #1c1d1f;
+$green: #4caf50;
+$fGreen: #1dbf73;
+
+// mixins
+@mixin shadow($color) {
+	box-shadow: 1px 2px 3px $color !important;
+}
+
+@mixin cardTitle {
+	color: $textPrimary !important;
+	text-decoration: none;
+	font-size: 1em !important;
+	padding: 0.5rem 0.8rem 1rem 0.8rem !important;
+	margin: 0 !important;
+	height: 56px !important;
+	line-height: unset !important;
+	&:hover {
+		color: $green !important;
+	}
+}
+
+// Scrollbar
+body::-webkit-scrollbar {
+	width: 0.5rem;
+}
+body::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px $bgPrimary;
+}
+body::-webkit-scrollbar-thumb {
+	background-color: $bgSecondary;
+	&:hover {
+		background-color: $fGreen;
+	}
+}
+
+#rkanik-fiverr {
+	overflow-x: hidden;
+	.fiverr-header .site-logo {
+		background-image: url("https://i.ibb.co/C69CwvS/fiverr-logo.png") !important;
+	}
+	nav.fiverr-nav {
+		a.nav-link,
+		button,
+		span.nav-label {
+			color: $textSecondary !important;
+			&:hover {
+				color: #43a047 !important;
+			}
+		}
+	}
+	.seller-card,
+	.fiverr-learn,
+	.seller-profile,
+	.status-filter-bar,
+	.mp-seller-profile article,
+	.gig-card-base:not(.list-view-card) {
+		background-color: $bgSecondary !important;
+		@include shadow($shadow);
+		border: none !important;
+		border-radius: 0.2rem;
+	}
+	.seller-card {
+		.user-profile-info .username-line {
+			a,
+			b.seller-link {
+				color: $textPrimary !important;
+				text-transform: uppercase;
+				letter-spacing: 4px;
+			}
+		}
+		.buttons-wrapper > .btn-lrg-standard {
+			background-color: unset !important;
+			color: $fGreen !important;
+			text-transform: uppercase !important;
+			border-color: $fGreen !important;
+			&:hover {
+				background-color: $fGreen !important;
+				color: white !important;
+			}
+		}
+		.user-stats {
+			&,
+			li.vacation {
+				border-top-color: #424242 !important;
+			}
+		}
+	}
+	.seller-profile,
+	.mp-seller-profile article {
+		h3 {
+			text-transform: uppercase !important;
+			color: $textSecondary !important;
+		}
+		li,
+		p {
+			color: $textPrimary !important;
+		}
+		div,
+		form {
+			border-bottom-color: #313131 !important;
+		}
+		.skills li,
+		.skills li .title {
+			border-color: #424242 !important;
+			color: #00897b !important;
+			&:hover {
+				background-color: $bgPrimary !important;
+			}
+		}
+	}
+	ul.status-filter-bar {
+		li.selected-filter {
+			color: $textPrimary !important;
+		}
+	}
+	.listing-container {
+		margin: 0 auto !important;
+		.gig-card-layout {
+			padding: 0.8rem !important;
+			width: 33.33% !important;
+		}
+	}
+	.gig-card-base:not(.list-view-card) {
+		overflow: hidden;
+		height: unset !important;
+		padding-bottom: 0.8rem !important;
+		h3 {
+			@include cardTitle();
+		}
+	}
+	.gig-wrapper.card {
+		@include shadow($shadow);
+		background-color: $bgSecondary !important;
+		border: none !important;
+		border-radius: 0.2rem !important;
+		overflow: hidden !important;
+		h3 a {
+			@include cardTitle();
+		}
+		footer {
+			border-top-color: #313131 !important;
+		}
+	}
+}
+
+#main-wrapper,
+.mp-box.mp-user-data-new,
+.logged-in-homepage-wrapper,
+.box-row,
+article.mp-gig-carousel.homepage-pro-gigs {
+	background-color: $bgPrimary !important;
+}
+article.mp-gig-carousel.homepage-pro-gigs {
+	border: none !important;
+}
+header {
+	@include shadow(#1c1d1f);
+}
+.header-row-wrapper {
+	border-bottom: none !important;
+}
+.standalone-nav-bar {
+	border-bottom: none !important;
+	border-top: 1px solid #313131 !important;
+	nav.categories-menu-package {
+		background-color: $bgSecondary !important;
+		li a,
+		li p {
+			color: $textSecondary !important;
+			&:hover {
+				color: #1dbf73 !important;
+			}
+		}
+	}
+}
+
+.user-page-perseus .gigs-wrapper header {
+	padding: 0.5rem 1rem !important;
+	box-sizing: border-box;
+	border-radius: 0.2rem;
+	margin: 0 0 1rem 0 !important;
+	h2 {
+		color: $textPrimary !important;
+	}
+}
+.fiverr-header-search {
+	input {
+		background-color: $bgPrimary !important;
+		border: none !important;
+		color: $textPrimary !important;
+	}
+}
+@media (min-width: 1212px) {
+	.user-page-perseus {
+		width: 1200px !important;
+		.gigs-panel {
+			min-width: 846px !important;
+		}
+	}
+}
