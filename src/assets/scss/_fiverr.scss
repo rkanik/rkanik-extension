@@ -1,206 +1,613 @@
-// Colors
-$bgPrimary: #202124;
-$bgSecondary: #292a2d;
-$textPrimary: #bdbdbd;
-$textSecondary: #757575;
-$shadow: #1c1d1f;
-$green: #4caf50;
-$fGreen: #1dbf73;
+// Import colors
+@import "./inc/themes";
+@import "./inc/colors";
 
 // mixins
 @mixin shadow($color) {
-	box-shadow: 1px 2px 3px $color !important;
+   box-shadow: 1px 2px 3px $color !important;
 }
-
+@mixin box {
+   background-color: $bgSecondary !important;
+   border: none !important;
+   border-radius: 0.3rem !important;
+}
 @mixin cardTitle {
-	color: $textPrimary !important;
-	text-decoration: none;
-	font-size: 1em !important;
-	padding: 0.5rem 0.8rem 1rem 0.8rem !important;
-	margin: 0 !important;
-	height: 56px !important;
-	line-height: unset !important;
-	&:hover {
-		color: $green !important;
-	}
+   color: $textPrimary !important;
+   text-decoration: none;
+   font-size: 1em !important;
+   padding: 0.5rem 0.8rem 1rem 0.8rem !important;
+   margin: 0 !important;
+   height: 56px !important;
+   line-height: unset !important;
+   &:hover {
+      color: $green !important;
+   }
+}
+@mixin userName {
+   color: $textPrimary !important;
+   text-transform: uppercase !important;
+   letter-spacing: 4px !important;
 }
 
-// Scrollbar
-body::-webkit-scrollbar {
-	width: 0.5rem;
-}
-body::-webkit-scrollbar-track {
-	-webkit-box-shadow: inset 0 0 6px $bgPrimary;
-}
-body::-webkit-scrollbar-thumb {
-	background-color: $bgSecondary;
-	&:hover {
-		background-color: $fGreen;
-	}
-}
+#aiod-fiverr {
+   overflow-x: hidden;
+   background-color: $bgPrimary !important;
+   #main-wrapper,
+   .mp-box.mp-user-data-new,
+   .logged-in-homepage-wrapper,
+   .box-row,
+   article.mp-gig-carousel.homepage-pro-gigs {
+      background-color: $bgPrimary !important;
+   }
+   article.mp-gig-carousel.homepage-pro-gigs {
+      border: none !important;
+   }
+   header {
+      @include box();
+      @include shadow(#1c1d1f);
+   }
+   .header-row-wrapper {
+      border-bottom: none !important;
+   }
+   .standalone-nav-bar {
+      border-bottom: none !important;
+      border-top: 1px solid #313131 !important;
+      nav.categories-menu-package {
+         background-color: $bgSecondary !important;
+         li a,
+         li p {
+            color: $textSecondary !important;
+            &:hover {
+               color: #1dbf73 !important;
+            }
+         }
+      }
+   }
+   .user-page-perseus .gigs-wrapper header {
+      padding: 0.5rem 1rem !important;
+      box-sizing: border-box;
+      border-radius: 0.2rem;
+      margin: 0 0 1rem 0 !important;
+      h2 {
+         color: $textPrimary !important;
+      }
+   }
+   .fiverr-header-search {
+      input {
+         background-color: $bgPrimary !important;
+         border: none !important;
+         color: $textPrimary !important;
+      }
+   }
+   @media (min-width: 1212px) {
+      .user-page-perseus {
+         width: 1200px !important;
+         .gigs-panel {
+            min-width: 846px !important;
+         }
+      }
+   }
 
-#rkanik-fiverr {
-	overflow-x: hidden;
-	.fiverr-header .site-logo {
-		background-image: url("https://i.ibb.co/C69CwvS/fiverr-logo.png") !important;
-	}
-	nav.fiverr-nav {
-		a.nav-link,
-		button,
-		span.nav-label {
-			color: $textSecondary !important;
-			&:hover {
-				color: #43a047 !important;
-			}
-		}
-	}
-	.seller-card,
-	.fiverr-learn,
-	.seller-profile,
-	.status-filter-bar,
-	.mp-seller-profile article,
-	.gig-card-base:not(.list-view-card) {
-		background-color: $bgSecondary !important;
-		@include shadow($shadow);
-		border: none !important;
-		border-radius: 0.2rem;
-	}
-	.seller-card {
-		.user-profile-info .username-line {
-			a,
-			b.seller-link {
-				color: $textPrimary !important;
-				text-transform: uppercase;
-				letter-spacing: 4px;
-			}
-		}
-		.buttons-wrapper > .btn-lrg-standard {
-			background-color: unset !important;
-			color: $fGreen !important;
-			text-transform: uppercase !important;
-			border-color: $fGreen !important;
-			&:hover {
-				background-color: $fGreen !important;
-				color: white !important;
-			}
-		}
-		.user-stats {
-			&,
-			li.vacation {
-				border-top-color: #424242 !important;
-			}
-		}
-	}
-	.seller-profile,
-	.mp-seller-profile article {
-		h3 {
-			text-transform: uppercase !important;
-			color: $textSecondary !important;
-		}
-		li,
-		p {
-			color: $textPrimary !important;
-		}
-		div,
-		form {
-			border-bottom-color: #313131 !important;
-		}
-		.skills li,
-		.skills li .title {
-			border-color: #424242 !important;
-			color: #00897b !important;
-			&:hover {
-				background-color: $bgPrimary !important;
-			}
-		}
-	}
-	ul.status-filter-bar {
-		li.selected-filter {
-			color: $textPrimary !important;
-		}
-	}
-	.listing-container {
-		margin: 0 auto !important;
-		.gig-card-layout {
-			padding: 0.8rem !important;
-			width: 33.33% !important;
-		}
-	}
-	.gig-card-base:not(.list-view-card) {
-		overflow: hidden;
-		height: unset !important;
-		padding-bottom: 0.8rem !important;
-		h3 {
-			@include cardTitle();
-		}
-	}
-	.gig-wrapper.card {
-		@include shadow($shadow);
-		background-color: $bgSecondary !important;
-		border: none !important;
-		border-radius: 0.2rem !important;
-		overflow: hidden !important;
-		h3 a {
-			@include cardTitle();
-		}
-		footer {
-			border-top-color: #313131 !important;
-		}
-	}
-}
-
-#main-wrapper,
-.mp-box.mp-user-data-new,
-.logged-in-homepage-wrapper,
-.box-row,
-article.mp-gig-carousel.homepage-pro-gigs {
-	background-color: $bgPrimary !important;
-}
-article.mp-gig-carousel.homepage-pro-gigs {
-	border: none !important;
-}
-header {
-	@include shadow(#1c1d1f);
-}
-.header-row-wrapper {
-	border-bottom: none !important;
-}
-.standalone-nav-bar {
-	border-bottom: none !important;
-	border-top: 1px solid #313131 !important;
-	nav.categories-menu-package {
-		background-color: $bgSecondary !important;
-		li a,
-		li p {
-			color: $textSecondary !important;
-			&:hover {
-				color: #1dbf73 !important;
-			}
-		}
-	}
-}
-
-.user-page-perseus .gigs-wrapper header {
-	padding: 0.5rem 1rem !important;
-	box-sizing: border-box;
-	border-radius: 0.2rem;
-	margin: 0 0 1rem 0 !important;
-	h2 {
-		color: $textPrimary !important;
-	}
-}
-.fiverr-header-search {
-	input {
-		background-color: $bgPrimary !important;
-		border: none !important;
-		color: $textPrimary !important;
-	}
-}
-@media (min-width: 1212px) {
-	.user-page-perseus {
-		width: 1200px !important;
-		.gigs-panel {
-			min-width: 846px !important;
-		}
-	}
+   // Order view
+   .mp-box {
+      background-color: unset !important;
+   }
+   #action-bar {
+      border-bottom-color: $bgSecondary !important;
+      box-shadow: none !important;
+   }
+   .order-tabs-wrapper {
+      @include shadow($shadow);
+      background-color: $bgSecondary !important;
+      border: none !important;
+      box-sizing: border-box;
+      overflow: hidden !important;
+      border-radius: 0.4rem !important;
+      .order-header {
+         background-color: unset !important;
+         box-shadow: none !important;
+         border-bottom: 1px solid $bgSecondary !important;
+         h1 {
+            color: $textPrimary !important;
+         }
+         .order-price {
+            font-weight: bolder !important;
+            color: $fGreen !important;
+         }
+      }
+      .order-gig-details {
+         background: unset !important;
+         table {
+            tr {
+               background-color: $bgPrimary !important;
+               border: none !important;
+            }
+         }
+      }
+      .order-messages {
+         background: unset !important;
+         article.conv-message {
+            background-color: unset !important;
+            border-top-color: $bgPrimary !important;
+            h4,
+            h4 a {
+               text-transform: uppercase !important;
+               color: $textSecondary !important;
+            }
+         }
+         article.order-status-lrg {
+            border-bottom: none !important;
+            border-top-color: $bgPrimary !important;
+            header {
+               box-shadow: none !important;
+            }
+         }
+      }
+      .recent-conversations {
+         background-color: unset !important;
+         border-bottom-color: $bgPrimary !important;
+         header {
+            box-shadow: none !important;
+         }
+      }
+      .order-countdown {
+         background-color: unset !important;
+      }
+   }
+   .fiverr-header .site-logo {
+      background-image: url("https://i.ibb.co/C69CwvS/fiverr-logo.png") !important;
+   }
+   nav.fiverr-nav {
+      a.nav-link,
+      button,
+      span.nav-label {
+         color: $textSecondary !important;
+         &:hover {
+            color: #43a047 !important;
+         }
+      }
+   }
+   .seller-card,
+   .fiverr-learn,
+   .seller-profile,
+   .status-filter-bar,
+   .mp-seller-profile article,
+   .gig-card-base:not(.list-view-card) {
+      background-color: $bgSecondary !important;
+      @include shadow($shadow);
+      border: none !important;
+      border-radius: 0.2rem;
+   }
+   .seller-card {
+      .user-profile-info .username-line {
+         a,
+         b.seller-link {
+            @include userName();
+         }
+      }
+      .buttons-wrapper > .btn-lrg-standard {
+         background-color: unset !important;
+         color: $fGreen !important;
+         text-transform: uppercase !important;
+         border-color: $fGreen !important;
+         &:hover {
+            background-color: $fGreen !important;
+            color: white !important;
+         }
+      }
+      .user-stats {
+         &,
+         li.vacation {
+            border-top-color: #424242 !important;
+         }
+      }
+   }
+   .seller-profile,
+   .mp-seller-profile article {
+      h3 {
+         text-transform: uppercase !important;
+         color: $textSecondary !important;
+      }
+      li,
+      p {
+         color: $textPrimary !important;
+      }
+      div,
+      form {
+         border-bottom-color: #313131 !important;
+      }
+      .skills li,
+      .skills li .title {
+         border-color: #424242 !important;
+         color: #00897b !important;
+         &:hover {
+            background-color: $bgPrimary !important;
+         }
+      }
+   }
+   ul.status-filter-bar {
+      li.selected-filter {
+         color: $textPrimary !important;
+      }
+   }
+   .listing-container {
+      margin: 0 auto !important;
+      .gig-card-layout {
+         padding: 0.8rem !important;
+         width: 33.33% !important;
+      }
+   }
+   .gig-card-base:not(.list-view-card) {
+      overflow: hidden;
+      height: unset !important;
+      padding-bottom: 0.8rem !important;
+      h3 {
+         @include cardTitle();
+      }
+      .badge-best-seller {
+         top: 0 !important;
+         border-top-right-radius: 2rem;
+         border-bottom-right-radius: 2rem;
+      }
+   }
+   .gig-wrapper.card {
+      @include shadow($shadow);
+      background-color: $bgSecondary !important;
+      border: none !important;
+      border-radius: 0.2rem !important;
+      overflow: hidden !important;
+      h3 a {
+         @include cardTitle();
+      }
+      footer {
+         border-top-color: #313131 !important;
+      }
+   }
+   .db-new-main-table {
+      table {
+         border-radius: 0.4rem;
+         overflow: hidden;
+         @include shadow($shadow);
+         thead {
+            tr {
+               border: none !important;
+               background-color: #1dbf73bb !important;
+               td {
+                  color: white !important;
+                  font-weight: 400 !important;
+                  letter-spacing: 1px !important;
+               }
+            }
+         }
+         tbody {
+            tr {
+               border: none !important;
+               background-color: $bgSecondary !important;
+               border-bottom: 1px solid $bgPrimary !important;
+               &:last-child {
+                  border-bottom: none !important;
+               }
+               &:hover {
+                  background-color: $bgPrimary !important;
+                  background: $bgPrimary !important;
+               }
+            }
+            td,
+            .title a {
+               color: $textPrimary !important;
+            }
+         }
+      }
+   }
+   .db-manage-gigs {
+      header {
+         padding: 1rem !important;
+         box-shadow: none !important;
+         border-top-left-radius: 0.4rem !important;
+         border-top-right-radius: 0.4rem !important;
+         h1 {
+            color: $textPrimary !important;
+            font-size: 2em !important;
+         }
+         .toggle-custom-orders label {
+            color: $textSecondary !important;
+            text-transform: uppercase !important;
+         }
+      }
+      .db-new-filters {
+         @include shadow($shadow);
+         padding: 0 1rem !important;
+         background-color: $bgSecondary !important;
+         border-bottom-left-radius: 0.4rem !important;
+         border-bottom-right-radius: 0.4rem !important;
+         ul {
+            border-bottom: none !important;
+            li {
+               a.sel,
+               a:hover {
+                  color: $fGreen !important;
+               }
+            }
+            li.pointer {
+               display: none !important;
+            }
+         }
+         a.btn-create-gig {
+            right: 1rem !important;
+         }
+      }
+   }
+   .dashboard-wrapper {
+      .seller-performance-wrapper {
+         border: none !important;
+         border-radius: 0.4rem !important;
+         background-color: $bgSecondary !important;
+         .user-details {
+            margin: 1.5rem -20px 0 -20px !important;
+            padding: 1.2rem 0 !important;
+            background-color: $fGreen !important;
+            .username-link {
+               color: white !important;
+               text-transform: uppercase !important;
+               letter-spacing: 4px !important;
+            }
+         }
+         .progresses-wrapper {
+            border-top: none !important;
+            margin-top: 0 !important;
+            border-color: $bgPrimary !important;
+            h6 {
+               color: $textPrimary !important;
+            }
+         }
+      }
+      .active-orders-wrapper {
+         background-color: $bgPrimary !important;
+         .filter-wrapper {
+            @include box();
+            @include shadow($shadow);
+            h3 {
+               color: $textPrimary !important;
+               span {
+                  color: $fGreen !important;
+               }
+            }
+         }
+         .order-cards-wrapper {
+            .order-card-wrapper {
+               .card-inner {
+                  @include box();
+                  @include shadow($shadow);
+                  .buyer-username {
+                     color: $textPrimary !important;
+                  }
+               }
+            }
+         }
+         .delimiter {
+            border-top: none !important;
+            span {
+               padding: 0.1rem 1rem !important;
+               border-radius: 1rem !important;
+               background-color: $fGreen !important;
+               color: white !important;
+            }
+         }
+         .seller-education-wrapper {
+            display: none !important;
+         }
+      }
+      .title {
+         background-color: $fGreen !important;
+         border: none !important;
+         h6,
+         a {
+            color: white !important;
+         }
+      }
+      .seller-dashboard-messages {
+         border: none !important;
+         .message {
+            background-color: $bgSecondary !important;
+            border-bottom-color: $bgPrimary !important;
+            &:last-child {
+               border: none !important;
+            }
+         }
+      }
+   }
+   .gig-page,
+   .gig-page-wrapper {
+      background-color: unset !important;
+   }
+   .gig-page {
+      .gig-overview {
+         @include box();
+         @include shadow($shadow);
+         padding: 1rem !important;
+         .breadcrumbs {
+            a {
+               color: $fGreen !important;
+            }
+         }
+         h1 {
+            color: $textPrimary !important;
+         }
+         a.seller-link {
+            @include userName();
+         }
+      }
+      .gig-description {
+         @include box();
+         @include shadow($shadow);
+         overflow: hidden !important;
+         header {
+            box-shadow: none !important;
+            .section-title {
+               @include userName();
+               padding: 1rem !important;
+               color: $fGreen !important;
+            }
+         }
+         .description-content {
+            padding: 0 1rem 1rem 1rem !important;
+            font-weight: 300 !important;
+            color: $textPrimary !important;
+         }
+         .metadata {
+            padding-left: 1rem !important;
+            border-top-color: $bgPrimary !important;
+         }
+      }
+   }
+   .gig-page-top {
+      .top-panel-wrap {
+         .top-panel {
+            background: $bgSecondary !important;
+            border: none !important ;
+            @include shadow($shadow);
+            header {
+               box-shadow: none !important;
+            }
+         }
+      }
+   }
+   #inbox {
+      .route {
+         border: none !important;
+         background: unset !important;
+         .contacts-container {
+            border-right: none !important;
+            margin-right: 1rem !important;
+            header {
+               background-color: $fGreen !important;
+               box-shadow: none !important;
+               border-bottom-left-radius: unset !important;
+               border-bottom-right-radius: unset !important;
+               .search-bar {
+                  .button-link {
+                     color: white !important;
+                  }
+               }
+            }
+            .contacts-list {
+               overflow-y: auto !important;
+               &::-webkit-scrollbar {
+                  width: 4px;
+               }
+               &::-webkit-scrollbar-track {
+                  -webkit-box-shadow: inset 0 0 4px $bgSecondary;
+               }
+               &::-webkit-scrollbar-thumb {
+                  background-color: $grey800;
+                  &:hover {
+                     background-color: $fGreen;
+                  }
+               }
+               .contact {
+                  background: $bgSecondary !important;
+                  border-bottom-color: $bgPrimary !important;
+                  &:hover,
+                  &.active-contact {
+                     background: #323338 !important;
+                  }
+                  &:last-child {
+                     border-bottom-left-radius: 0.2rem !important;
+                     border-bottom-right-radius: 0.2rem !important;
+                  }
+                  .username-container strong {
+                     color: $textPrimary !important;
+                     text-transform: capitalize !important;
+                  }
+               }
+            }
+         }
+         #conversation {
+            header {
+               .user-info h1 {
+                  color: $textPrimary !important;
+                  text-transform: capitalize !important;
+               }
+            }
+            .message-flow .content {
+               &::-webkit-scrollbar {
+                  width: 4px;
+               }
+               &::-webkit-scrollbar-track {
+                  -webkit-box-shadow: inset 0 0 4px $bgSecondary;
+               }
+               &::-webkit-scrollbar-thumb {
+                  background-color: $grey800;
+                  &:hover {
+                     background-color: $fGreen;
+                  }
+               }
+            }
+            .message-wrapper .message {
+               &:hover {
+                  background-color: unset !important;
+               }
+               .sender {
+                  color: $textPrimary !important;
+                  text-transform: capitalize !important;
+               }
+               .wrapper-message {
+                  @include box();
+                  @include shadow($shadow);
+                  .custom-package {
+                     header {
+                        background-color: unset !important;
+                        box-shadow: unset !important;
+                        border-bottom: 1px solid !important;
+                        border-radius: unset !important;
+                        h3 {
+                           color: $textPrimary !important;
+                        }
+                        .price {
+                           color: $fGreen !important;
+                        }
+                     }
+                     .description {
+                        border-bottom: none !important;
+                     }
+                     footer {
+                        border-top: none !important;
+                     }
+                  }
+               }
+            }
+            footer .message-box {
+               @include box();
+               @include shadow($shadow);
+               padding-bottom: 1rem !important;
+               .message-uploader-container {
+                  border: none !important;
+                  box-shadow: none !important;
+                  .message-container {
+                     border-bottom: 1px solid !important;
+                  }
+                  textarea {
+                     background-color: unset !important;
+                  }
+               }
+               button.action-offer {
+                  background-color: unset !important;
+                  &:hover {
+                     background-color: $fGreen !important;
+                     color: white !important;
+                  }
+               }
+            }
+         }
+      }
+   }
+   @media only screen and (min-width: 900px) {
+      .dashboard-wrapper {
+         .seller-dashboard-wrapper {
+            border-top: none !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+         }
+      }
+   }
 }

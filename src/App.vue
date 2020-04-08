@@ -1,18 +1,21 @@
 <template>
 	<div id="app">
-		<h1>APPPPPPP</h1>
-		<Home />
+		<popup />
 	</div>
 </template>
+
 <script>
-import Home from "./views/Home.vue";
+// Components
+import Popup from "./components/Popup"
+// Default export
 export default {
-	name: "App",
-	components: { Home }
-};
-</script>
-<style>
-	h1 {
-		color: red;
+	name: 'App',
+	components: {
+		'popup': Popup
 	}
+}
+</script>
+<style lang="scss">
+	@import "./assets/scss/inc/_styles.scss";
+	@import "./assets/scss/utils/_utils.scss";
 </style>

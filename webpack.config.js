@@ -1,20 +1,20 @@
-/* eslint-disable spaced-comment */
-/* eslint-disable indent */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-path-concat */
-
+'use strict'
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader');
 
-module.exports = {
-   context: __dirname + '/src',
+const config = {
+   performance: {
+      hints: false,
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000
+   },
    mode: 'production',
+   context: __dirname + '/src',
    entry: {
       'app': './app/app.js',
       'background': './app/background.js',
       'popup/popup': './app/popup.js'
-
    },
    output: {
       path: __dirname + '/extension',
@@ -35,9 +35,6 @@ module.exports = {
          }, {
             test: /\.scss$/,
             use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-         }, {
-            test: /\.sass$/,
-            use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader?indentedSyntax'],
          }
       ]
    },
@@ -45,12 +42,13 @@ module.exports = {
       new VueLoaderPlugin(),
       new CopyWebpackPlugin([
          { from: 'app/manifest.json', to: 'manifest.json' },
-         { from: 'assets/css/style.css', to: 'assets/css/style.css' },
-         { from: 'html/popup.html', to: 'popup/index.html' },
-         { from: 'assets/icons', to: 'assets/icons' },
+         { from: 'html/popup.html', to: 'popup/popup.html' },
+         { from: 'assets/icons', to: 'icons' },
+         { from: 'libs', to: 'libs' },
+         { from: 'assets/css', to: 'css' },
+         { from: 'assets/fonts', to: 'fonts' },
       ]),
-      new MiniCssExtractPlugin({
-         filename: 'assets/css/[name].css',
-      }),
+      new MiniCssExtractPlugin({ filename: '[name].css' }),
    ]
 }
+module.exports = config;
