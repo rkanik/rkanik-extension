@@ -1,4 +1,6 @@
-console.log("CHROME", chrome)
+import { NOTIFICATION } from '../helpers/defined'
+console.log("CHROME-background", chrome)
+
 // chrome.runtime.onInstalled.addListener(res => {
 //    console.log("onInstalled", res)
 //    console.log(chrome)
@@ -19,11 +21,18 @@ console.log("CHROME", chrome)
 
 // chrome.browserAction.setBadgeText({ text: "15" })
 
-// chrome.runtime.onMessage.addListener((msg, sender) => {
-//    console.log("chrome.runtime.onMessage.addListener", msg, sender)
-//    // First, validate the message's structure.
-//    if ((msg.from === 'content') && (msg.subject === 'showPageAction')) {
-//       // Enable the page-action for the requesting tab.
-//       //chrome.Bro.show(sender.tab.id);
-//    }
-// });
+const createNotification = (name, options) => {
+    chrome.notifications.create(name, { type: 'basic', ...options }, event => {
+        console.log(event);
+    });
+}
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    console.log("ON MESSAGE :: ", request, sender)
+
+    if (request.type === NOTIFICATION) {
+        createNotification(request.name, request.options)
+        sendResponse({ message: "DONE" })
+    }
+
+});

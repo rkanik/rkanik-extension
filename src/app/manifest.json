@@ -1,49 +1,51 @@
 {
-   "name": "All in one dark",
-   "description": "Dark theme and some scheduling functionality for Google, Youtube, Github, Facebook, Fiverr",
-   "version": "0.0.1",
-   "manifest_version": 2,
-   "permissions": [
-      "storage",
-      "declarativeContent"
-   ],
-   "content_scripts": [
-      {
-         "matches": [
-            "https://www.google.com/*",
-            "https://open.spotify.com/*",
-            "https://www.facebook.com/*",
-            "https://github.com/*",
-            "https://drive.google.com/*",
-            "https://www.youtube.com/*",
-            "https://www.fiverr.com/*",
-            "http://slither.io/"
-         ],
-         "js": [
-            "app.js"
-         ],
-         "css": [
-            "app.css"
-         ]
-      }
-   ],
-   "browser_action": {
-      "default_popup": "popup/popup.html",
-      "default_icon": {
-         "24": "icons/icon_24.png",
-         "48": "icons/icon_48.png",
-         "128": "icons/icon_128.png"
-      }
-   },
-   "background": {
-      "scripts": [
-         "background.js"
-      ],
-      "persistent": true
-   },
-   "icons": {
-      "24": "icons/icon_24.png",
-      "48": "icons/icon_48.png",
-      "128": "icons/icon_128.png"
-   }
+    "name": "All in one dark",
+    "description": "Dark theme and some scheduling functionality for Google, Youtube, Github, Facebook, Fiverr",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "permissions": [
+        "storage",
+        "declarativeContent",
+        "notifications",
+        "management"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.google.com/*",
+                "https://open.spotify.com/*",
+                "https://www.facebook.com/*",
+                "https://github.com/*",
+                "https://drive.google.com/*",
+                "https://www.youtube.com/*",
+                "https://www.fiverr.com/*",
+                "http://slither.io/"
+            ],
+            "js": [
+                "app.js"
+            ],
+            "css": [
+                "app.css"
+            ]
+        }
+    ],
+    "browser_action": {
+        "default_popup": "popup/popup.html",
+        "default_icon": {
+            "24": "icons/icon_24.png",
+            "48": "icons/icon_48.png",
+            "128": "icons/icon_128.png"
+        }
+    },
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": true
+    },
+    "icons": {
+        "24": "icons/icon_24.png",
+        "48": "icons/icon_48.png",
+        "128": "icons/icon_128.png"
+    }
 }

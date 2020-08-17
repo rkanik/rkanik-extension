@@ -1,27 +1,95 @@
-import { FIVE_MINUTE } from "../helper/defined"
+import { FIVE_MINUTE, NOTIFICATION } from "../helpers/defined"
+import { sleep, ms, miniId } from '../helpers/helpers'
 
-const init = () => {
+// Global variables
+let visible = true
 
-   // Defining a job
-   let fiveMinuteTimeout
+const showNotification = (notifyNo, options) => {
+    // Show new message notification
+    const notifyOptions = {
+        options,
+        type: NOTIFICATION,
+        name: 'FIVERR-NEW-MESSAGE' + notifyNo
+    }
+    chrome.runtime.sendMessage(notifyOptions, () => { });
+}
 
-   // Method will  start the job
-   const startFiveMinuteReloader = () => {
-      fiveMinuteTimeout = setTimeout(() => { location.reload() }, FIVE_MINUTE);
-   }
+const checkForLiveMessage = count => {
+    let liveChat = document.getElementById('live-tray')
+    if (liveChat && liveChat.children.length) {
+        showNotification(count, {
+            title: "New Message!!!",
+            message: 'You have a new message on fiverr',
+            iconUrl: 'https://www.fiverr.com/favicon.ico'
+        })
+    }
+}
 
-   // starting reloader when tab is in background
-   if (document.hidden) { startFiveMinuteReloader() }
+let cmInterval = 10 * ms.second
+const checkForNewMessage = async () => {
 
-   // Listening on visibilitychange
-   document.addEventListener("visibilitychange", () => {
-      
-      // starting reloader when tab is in background
-      if (document.hidden) { startFiveMinuteReloader() }
+    if (!visible) {
+        let messageBtn = document.querySelector('.popover-notifications-drawer button')
+        if (messageBtn) { messageBtn.click() }
+        await sleep(ms.second)
+        messageBtn.click()
+    }
 
-      // Clearing reloader timeout when tab get focused
-      else if (!document.hidden && fiveMinuteTimeout) { clearTimeout(fiveMinuteTimeout) }
-   });
+    let hasUnread = document.querySelector('.popover-notifications-drawer .unread')
+    if (hasUnread) {
+        showNotification(miniId(3), {
+            title: "New Message!!!",
+            message: 'You have a new message on fiverr',
+            iconUrl: 'https://www.fiverr.com/favicon.ico'
+        })
+        cmInterval = 10 * ms.minute
+    }
+    else cmInterval = 10 * ms.second
+    
+    await sleep(cmInterval)
+    checkForNewMessage()
+}
+
+const init = async () => {
+
+    console.log("CHROME", chrome, chrome.notifications);
+
+    // Defining a job
+    let fiveMinuteTimeout
+
+    // Method will  start the job
+    const startFiveMinuteReloader = () => {
+        fiveMinuteTimeout = setTimeout(() => { location.reload() }, FIVE_MINUTE);
+    }
+
+    // starting reloader when tab is in background
+    if (document.hidden) { startFiveMinuteReloader() }
+
+    // Listening on visibilitychange
+    document.addEventListener("visibilitychange", () => {
+
+        // starting reloader when tab is in background
+        if (document.hidden) {
+            visible = false
+            startFiveMinuteReloader()
+        }
+        else visible = true
+
+        // Clearing reloader timeout when tab get focused
+        if (!document.hidden && fiveMinuteTimeout) { clearTimeout(fiveMinuteTimeout) }
+    });
+
+
+
+
+    checkForNewMessage()
+
+
+    let counter = 0
+    setInterval(() => {
+        counter += 1;
+        checkForLiveMessage(counter)
+    }, 10000);
 }
 
 export default { init }

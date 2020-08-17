@@ -22,6 +22,8 @@ import "../assets/scss/app.scss"
 // Websites
 //import slither from "../web/slither-io"
 import fiverr from "../web/fiverr"
+import spotify from "../web/spotify"
+import facebook from "../web/facebook"
 
 const setBodyId = websites => {
 
@@ -34,27 +36,17 @@ const setBodyId = websites => {
 
 const init = async () => {
 
-   console.log("CHROME", chrome)
-
    let state = await storage.get()
-   console.log(state)
-
    let websites = state[WEBSITES]
-   console.log(websites)
-
    websites && setBodyId(websites)
 
-   console.log("LOCATION", location)
-
-   // if (location.host.includes('slither.io')) {
-   //    slither.init()
-   // }
-
-   // Initializing fiverr
+   // Initializing current website
    if (location.host.includes('fiverr')) { fiverr.init() }
+   else if (location.host.includes('spotify')) { spotify.init() }
+   else if (location.host.includes('facebook')) { facebook.init() }
+   //else if (location.host.includes('slither.io')) { slither.init() }
 
    storage.onChanged(newState => {
-      console.log(newState[WEBSITES])
       if (JSON.stringify(newState[WEBSITES].newValue) !== JSON.stringify(websites)) {
          websites = newState[WEBSITES].newValue
          setBodyId(websites)

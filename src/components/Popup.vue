@@ -73,6 +73,7 @@ export default {
 			{ name: 'Fiverr', url: "https://fiverr.com", active: true, icon: "mdi mdi-semantic-web" },
 			{ name: 'Youtube', url: "https://youtube.com", active: true, icon: "mdi mdi-youtube" },
 			{ name: 'Facebook', url: "https://facebook.com", active: true, icon: "mdi mdi-facebook" },
+			{ name: 'Github', url: "https://github.com", active: true, icon: "mdi mdi-github" },
 		],
 		tabs: [
 			{ text: "Theme", active: true },
@@ -84,12 +85,12 @@ export default {
 	},
 	watch: {
 		websites(v) {
-			console.log(v)
+			console.log('websites', v)
 		}
 	},
 	methods: {
 		async syncStorage() {
-			await storage.set(WEBSITES, this.websites)
+			//await storage.set(WEBSITES, this.websites)
 			this.websites = (await storage.get(WEBSITES)) || []
 		},
 		async handleWebsiteClick(index) {
