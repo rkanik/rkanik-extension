@@ -1,0 +1,54 @@
+// Font
+@import "./fonts/fonts";
+
+// Themes
+@import "./themes/themes";
+
+// Utils
+@import "./utils/margins";
+@import "./utils/paddings";
+@import "./utils/elevations";
+
+// Reset
+@import "./reset/reset";
+
+.flex {
+    display: flex;
+    &.justify-end {
+        justify-content: flex-end;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+i {
+    cursor: pointer;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.fix-stroke svg {
+    stroke: var(--text-secondary);
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+html[data-theme="dark"] {
+    .el-input__inner {
+        background-color: var(--bg-secondary);
+        border-color: transparent;
+        color: var(--text-primary);
+        &::placeholder {
+            color: var(--text-secondary);
+        }
+    }
+    .el-button--danger.is-plain {
+        background: #f56c6c15;
+        border-color: #f56c6c15;
+    }
+}

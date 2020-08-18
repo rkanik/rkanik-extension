@@ -27,31 +27,32 @@ import facebook from "../web/facebook"
 
 const setBodyId = websites => {
 
-   let website = websites.find(w => location.host.includes(w.name.toLowerCase()))
+    let website = websites.find(w => location.host.includes(w.name.toLowerCase()))
 
-   if (website && website.active) { document.body.id = "aiod-" + website.name.toLowerCase() }
+    if (website && website.active) { document.body.id = "aiod-" + website.name.toLowerCase() }
 
-   else document.body.removeAttribute('id')
+    else document.body.removeAttribute('id')
 }
 
 const init = async () => {
 
-   let state = await storage.get()
-   let websites = state[WEBSITES]
-   websites && setBodyId(websites)
+    let state = await storage.get()
+    let websites = state[WEBSITES]
+    websites && setBodyId(websites)
 
-   // Initializing current website
-   if (location.host.includes('fiverr')) { fiverr.init() }
-   else if (location.host.includes('spotify')) { spotify.init() }
-   else if (location.host.includes('facebook')) { facebook.init() }
-   //else if (location.host.includes('slither.io')) { slither.init() }
+    // Initializing current website
+    if (location.host.includes('fiverr')) { fiverr.init() }
+    else if (location.host.includes('spotify')) { spotify.init() }
+    else if (location.host.includes('facebook')) { facebook() }
+    //else if (location.host.includes('slither.io')) { slither.init() }
 
-   storage.onChanged(newState => {
-      if (JSON.stringify(newState[WEBSITES].newValue) !== JSON.stringify(websites)) {
-         websites = newState[WEBSITES].newValue
-         setBodyId(websites)
-      }
-   })
+    storage.onChanged(storage.keys.WEBSITES, newState => {
+        console.log(newState);
+        if (JSON.stringify(newState[WEBSITES].newValue) !== JSON.stringify(websites)) {
+            websites = newState[WEBSITES].newValue
+            setBodyId(websites)
+        }
+    })
 
 }
 

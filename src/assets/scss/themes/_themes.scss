@@ -1,0 +1,7 @@
+@import "./light";
+@import "./dark";
+
+body {
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+}

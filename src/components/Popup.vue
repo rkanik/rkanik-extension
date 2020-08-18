@@ -1,5 +1,12 @@
 <template>
 	<div id="aiod-popup" :class="theme" class="bg-grey-8 pa-5">
+		<el-button>Default</el-button>
+		<el-button type="primary">Primary</el-button>
+		<el-button type="success">Success</el-button>
+		<el-button type="info">Info</el-button>
+		<el-button type="warning">Warning</el-button>
+		<el-button type="danger">Danger</el-button>
+
 		<header>
 			<div class="d-flex">
 				<img class="logo" src="https://i.ibb.co/1Kg1L8C/rk-logo-48.png" alt="app-logo" />

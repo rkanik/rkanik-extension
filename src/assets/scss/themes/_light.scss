@@ -1,0 +1,16 @@
+html,
+html[data-theme="light"] {
+    // Backgounds
+    --bg-primary: white;
+    --bg-secondary: #f5f5f5;
+
+    // Texts
+    --text-primary: #212121;
+    --text-secondary: #424242;
+    --text-disabled: #3d4045;
+
+    // Other
+    --color-divider: #303338;
+    --color-shadow: #1f2227;
+    --color-accent: #8bc34a;
+}

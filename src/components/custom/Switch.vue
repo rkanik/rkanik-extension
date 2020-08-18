@@ -1,6 +1,11 @@
 <template>
-	<div class="custom-switch">
-		<input @change="handleChange" :checked="chckd" type="checkbox" :id="id" />
+	<div class="custom-switch" :class="size">
+		<input
+			@change="handleChange"
+			:checked="value"
+			type="checkbox"
+			:id="id"
+		/>
 		<label :for="id"></label>
 	</div>
 </template>
@@ -8,41 +13,34 @@
 <script>
 export default {
 	name: "Custom-Switch",
-	props: ['checked'],
+	props: ['value', 'size'],
 	data: () => ({
-		chckd: false,
 		id: Math.random()
 			.toString(36)
 			.slice(-3)
 	}),
-	created() {
-		this.chckd = this.checked || false
-	},
-	watch: {
-		checked(val) {
-			if (this.chckd !== val) this.chckd = val
-		}
-	},
 	methods: {
 		handleChange() {
-			this.chckd = !this.chckd
-			this.$emit('change', this.chckd)
+			this.$emit('input', !this.value)
+			this.$emit('change', !this.value)
 		}
 	}
 }
 </script>
 <style lang="scss" scoped>
 	.custom-switch {
+		width: max-content;
 		input[type="checkbox"] {
 			height: 0;
 			width: 0;
 			visibility: hidden;
+			position: absolute;
 		}
 		label {
 			cursor: pointer;
 			width: 2.4rem;
 			height: 1.2rem;
-			background: #313131;
+			background: rgba(#009688, 0.2);
 			display: block;
 			border-radius: 2rem;
 			position: relative;
@@ -53,13 +51,13 @@ export default {
 				left: 0.195rem;
 				width: 0.8rem;
 				height: 0.8rem;
-				background: #e0e0e0;
+				background: #009688;
 				border-radius: 50%;
 				transition: 0.3s;
 			}
 		}
 		input:checked + label {
-			background: #0092f3;
+			background: #009688;
 			&:after {
 				background: #ffffff;
 				left: calc(100% - 0.195rem);
@@ -68,6 +66,16 @@ export default {
 		}
 		label:active:after {
 			width: 1.5rem;
+		}
+		&.small label {
+			width: 1.9rem;
+			height: 1rem;
+			&:after {
+				top: 3px;
+				left: 4px;
+				width: 10px;
+				height: 10px;
+			}
 		}
 	}
 </style>
