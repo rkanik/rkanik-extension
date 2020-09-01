@@ -1,7 +1,16 @@
 <template>
 	<div class="extensions">
 		<flex-box justifyBetween alignCenter class="header mb-4 px-2">
-			<h2>Extensions</h2>
+			<h2>
+				Extensions
+				<feather
+					@click="handleClickExternal"
+					class="ml-2 mt-1"
+					stroke-width="1"
+					type="external-link"
+					size="16"
+				></feather>
+			</h2>
 			<flex-box alignCenter>
 				<el-input v-if="filter.action" size="mini" placeholder="Filter" v-model="filter.keyword"></el-input>
 				<feather v-if="!filter.action" @click="filter.action = true" type="search" size="18"></feather>
@@ -15,7 +24,7 @@
 				v-for="ext in filtertedExtensions"
 				@change="handleChange"
 				@delete="handleDelete"
-                class="extension-card"
+				class="extension-card"
 			/>
 		</perfect-scrollbar>
 	</div>
@@ -24,6 +33,7 @@
 <script>
 import * as $chrome from '../chrome'
 import Extension from '../components/Extension.vue'
+import _tabs from '../chrome/_tabs'
 export default {
 	name: 'extensions',
 	components: {
@@ -45,12 +55,16 @@ export default {
 			try { this.extensions = await $chrome.loadExtensions() }
 			catch (error) { console.log(error); }
 		},
+		handleClickExternal() {
+            _tabs.create({ active: true, url: 'chrome://extensions/' })
+            
+		},
 		getIcon(icons) {
 			let icon = icons.find(i => i.size === 48)
 			return icon ? icon.url : icons[0].url
 		},
 		handleChange({ id, value }) {
-			chrome.management.setEnabled(id, value)
+			chrome.management.setEnabled(id, value) 
 		},
 		handleDelete(id) {
 			chrome.management.uninstall(id)

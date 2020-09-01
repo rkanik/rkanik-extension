@@ -1,0 +1,18 @@
+// Scrollbar
+@mixin scrollbar($bg: $grey500, $hbg: $green500, $width: 0.5rem) {
+    &::-webkit-scrollbar {
+        width: $width;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: $bg;
+        &:hover {
+            background-color: $hbg;
+        }
+    }
+}
+
+@mixin userName {
+    color: $textPrimary !important;
+    text-transform: uppercase !important;
+    letter-spacing: 4px !important;
+}

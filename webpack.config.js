@@ -1,4 +1,5 @@
 'use strict'
+const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader');
@@ -20,19 +21,26 @@ const config = {
         path: __dirname + '/extension',
         filename: '[name].js'
     },
+    resolve: {
+        symlinks: false
+    },
     module: {
         rules: [
             {
                 test: /\.vue$/,
+                include: path.resolve(__dirname, 'src'),
                 loaders: 'vue-loader'
-            }, {
+            },
+            {
                 test: /\.js$/,
+                include: path.resolve(__dirname, 'src'),
                 loader: 'babel-loader',
-                exclude: /node_modules/
-            }, {
+            },
+            {
                 test: /\.css$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
-            }, {
+            },
+            {
                 test: /\.scss$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
             },
@@ -61,4 +69,5 @@ const config = {
     ],
     watch: true
 }
+
 module.exports = config;

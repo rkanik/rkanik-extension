@@ -1,0 +1,8 @@
+#ssrb_left_rail_start + div[role="navigation"] {
+    padding: 1rem 0 1rem 1rem;
+    & > div {
+        background-color: #242526;
+        border-radius: 0.3rem;
+        padding-bottom: 1rem;
+    }
+}

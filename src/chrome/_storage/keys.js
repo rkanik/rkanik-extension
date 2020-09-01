@@ -1,0 +1,5 @@
+export const WEBSITES = 'WEBSITES'
+export const THEME = 'THEME'
+export const THEMES = 'THEMES'
+export const SETTINGS = 'SETTINGS'
+export const ROUTE = 'ROUTE'

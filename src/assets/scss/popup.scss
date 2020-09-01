@@ -39,6 +39,7 @@ i {
 }
 
 html[data-theme="dark"] {
+    input,
     .el-input__inner {
         background-color: var(--bg-secondary);
         border-color: transparent;

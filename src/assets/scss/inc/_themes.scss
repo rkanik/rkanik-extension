@@ -1,6 +1,7 @@
 // Dark theme colrors
 $bgPrimary: #202124;
 $bgSecondary: #292a2d;
+$bgSecLight: #303135;
 $textPrimary: #bdbdbd;
 $textSecondary: #757575;
 
@@ -10,25 +11,7 @@ $green: #4caf50;
 // Fiverr
 $fGreen: #1dbf73;
 
-html,
-html[data-theme="light"] {
-
-    // Backgounds
-    --bg-primary: white;
-    --bg-secondary: #f5f5f5;
-
-    // Texts
-    --text-primary: #212121;
-    --text-secondary: #424242;
-    --text-disabled: #3d4045;
-
-    // Other
-    --color-divider: #303338;
-    --color-shadow: #1f2227;
-    --color-accent: #8bc34a;
-}
-
-html[data-theme="dark"] {
+html[rk-data-theme="dark"] {
     // Backgounds
     --bg-primary: #202124;
     --bg-secondary: #292a2d;

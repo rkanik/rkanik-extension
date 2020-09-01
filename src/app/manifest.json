@@ -4,6 +4,7 @@
     "version": "0.0.1",
     "manifest_version": 2,
     "permissions": [
+        "tabs",
         "storage",
         "declarativeContent",
         "notifications",
@@ -19,7 +20,8 @@
                 "https://drive.google.com/*",
                 "https://www.youtube.com/*",
                 "https://www.fiverr.com/*",
-                "http://slither.io/"
+                "http://slither.io/",
+                "https://www.user.dantownms.com/*"
             ],
             "js": [
                 "app.js"

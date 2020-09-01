@@ -1,0 +1,71 @@
+#perseus-app {
+    padding: 0 !important;
+    height: 100% !important;
+}
+
+#conversation {
+    //overflow: auto;
+    & > header {
+        margin-bottom: 1rem;
+    }
+}
+
+.inbox_perseus {
+    background: transparent !important;
+}
+
+.message-flow .content:not(.single-msg) {
+    @include scrollbar($bgSecondary, $fGreen, 0.4rem);
+}
+
+.details-pane {
+    border-left: none !important;
+    .about {
+        border-radius: 0.3rem;
+        background-color: $bgSecondary !important;
+        margin-left: 0.5rem;
+        & > header {
+            background-color: unset !important;
+            box-shadow: unset !important;
+            h2 {
+                color: $textPrimary;
+            }
+        }
+        .username {
+            @include userName;
+        }
+    }
+    ul {
+        color: $textSecondary;
+    }
+}
+
+.message-flow .content > div .message {
+    &:hover {
+        background-color: $bgSecondary;
+    }
+    .sender {
+        text-transform: uppercase;
+        color: $textPrimary !important;
+    }
+}
+
+.message-box {
+    background-color: $bgSecondary !important;
+}
+
+.conversation-footer {
+    padding: 0 !important;
+    top: -8px !important;
+    margin-top: 1rem;
+}
+
+.message-box .message-uploader-container {
+    border: none;
+}
+
+.message-box .textarea-container textarea {
+    background-color: transparent !important;
+    font-size: 1.3em !important;
+    color: $textPrimary !important;
+}

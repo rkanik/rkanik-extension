@@ -29,9 +29,18 @@
     letter-spacing: 4px !important;
 }
 
-#aiod-fiverr {
-    overflow-x: hidden;
-    background-color: $bgPrimary !important;
+html[rk-data-theme="dark"][rk-data-web="fiverr"] {
+    @import "./websites/fiverr/inbox";
+
+    body {
+        overflow-x: hidden;
+        background-color: var(--bg-primary) !important;
+    }
+
+    div {
+        transition: none !important;
+    }
+
     #main-wrapper,
     .mp-box.mp-user-data-new,
     .logged-in-homepage-wrapper,
@@ -39,6 +48,13 @@
     article.mp-gig-carousel.homepage-pro-gigs {
         background-color: $bgPrimary !important;
     }
+
+    // Start flash messages
+    .main-flashes {
+        display: none !important;
+    }
+    // End flash messages
+
     article.mp-gig-carousel.homepage-pro-gigs {
         border: none !important;
     }

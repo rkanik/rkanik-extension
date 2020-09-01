@@ -16,6 +16,8 @@ import AppBar from './components/AppBar.vue'
 
 // Storage
 import storage from './storage/chrome.storage'
+import _storage from './chrome/_storage'
+import { SETTINGS, THEME } from './chrome/_storage/keys'
 
 export default {
 	name: 'App',
@@ -25,10 +27,11 @@ export default {
 	},
 	data: () => ({
 		activeTab: 'themes',
-		theme: 'dark'
+		theme: 'light'
 	}),
 	created() {
 		this.syncTheme()
+		console.log('Chrome -> ', chrome);
 	},
 	methods: {
 		setTheme(theme) {
@@ -38,13 +41,13 @@ export default {
 			return html
 		},
 		async syncTheme() {
-			this.theme = await storage.get(storage.keys.THEME)
+			this.theme = await _storage.get(THEME)
 			this.setTheme(this.theme)
 		},
 		handleChangeTheme(theme) {
 			let html = this.setTheme(theme)
 			setTimeout(() => { html.classList.remove('theme-transition') }, 1000)
-			storage.set(storage.keys.THEME, theme)
+			_storage.set(THEME, theme)
 			this.theme = theme
 		}
 	},

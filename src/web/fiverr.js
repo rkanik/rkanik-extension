@@ -50,7 +50,7 @@ const checkForNewMessage = async () => {
     checkForNewMessage()
 }
 
-const init = async () => {
+export default async () => {
 
     console.log("CHROME", chrome, chrome.notifications);
 
@@ -91,5 +91,3 @@ const init = async () => {
         checkForLiveMessage(counter)
     }, 10000);
 }
-
-export default { init }

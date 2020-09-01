@@ -1,29 +1,24 @@
-/* eslint-disable indent */
-/* eslint-disable quotes */
-
-// imports
-//import Vue from "vue"
-//import { FIVE_MINUTE, ONE_SECOND } from "../helper/defined"
-
-// Store
-//import store from "../store"
-//import { POPUP } from "../store/store.config"
-
-// Chrome storage
-import storage from "../storage/chrome.storage"
-let { WEBSITES } = storage.keys
-
-// Style sheets
-import "../assets/scss/app.scss"
-
-// Components
-// import IntroLoader from "../components/IntroLoader.vue"
-
 // Websites
-//import slither from "../web/slither-io"
 import fiverr from "../web/fiverr"
 import spotify from "../web/spotify"
 import facebook from "../web/facebook"
+
+// Chrome storage
+import _storage from '../chrome/_storage'
+import storage from "../storage/chrome.storage"
+import { WEBSITES, THEMES } from '../chrome/_storage/keys'
+import { RK_DATA_THEME, RK_DATA_WEB, SPLASH_SCREEN, DARK } from '../helpers/defined'
+
+// Style sheets
+import "../assets/scss/app.scss"
+import { sleep } from "../helpers/helpers"
+
+console.log(':: APP ::');
+
+const ready = cb => {
+    if (document.readyState != "loading") { cb(); }
+    else { document.addEventListener("DOMContentLoaded", cb); }
+}
 
 const setBodyId = websites => {
 
@@ -34,113 +29,63 @@ const setBodyId = websites => {
     else document.body.removeAttribute('id')
 }
 
-const init = async () => {
+const setSplashScreen = (config = {}) => {
+    console.log('setSplashScreen', config);
+    if (config.remove) {
+        return document.body.removeChild(
+            document.getElementById(SPLASH_SCREEN)
+        )
+    }
+    let overlay = document.createElement('div')
+    overlay.id = SPLASH_SCREEN
+    overlay.style.cssText = `
+        position: fixed; height: 100vh; width: 100%;
+        top: 0; left: 0; background-color: #18191A;`
+    document.body.appendChild(overlay)
+}
 
-    let state = await storage.get()
-    let websites = state[WEBSITES]
-    websites && setBodyId(websites)
+// Function to sync theme on supported websites
+const syncTheme = async () => {
 
-    // Initializing current website
-    if (location.host.includes('fiverr')) { fiverr.init() }
-    else if (location.host.includes('spotify')) { spotify.init() }
-    else if (location.host.includes('facebook')) { facebook() }
-    //else if (location.host.includes('slither.io')) { slither.init() }
+    let themes = await _storage.get(THEMES)
+    //console.log("THEMES", themes);
+    if (!themes) return
 
-    storage.onChanged(storage.keys.WEBSITES, newState => {
-        console.log(newState);
-        if (JSON.stringify(newState[WEBSITES].newValue) !== JSON.stringify(websites)) {
-            websites = newState[WEBSITES].newValue
-            setBodyId(websites)
-        }
-    })
+    let website = themes.find(web => web.origin === location.origin)
+    if (website && website.theme.dark) {
+        document.documentElement.setAttribute(RK_DATA_THEME, DARK)
+        document.documentElement.setAttribute(RK_DATA_WEB, website.name.toLowerCase())
+    }
 
 }
 
+const init = async () => {
 
-init()
+    console.clear()
+    console.log('Initialized :: ', chrome);
+    console.log('Document ready :: ', document);
 
-// storage.onChanged(res => {
-//    console.log(res)
-// })
+    syncTheme()
 
-// // Inform the background page that 
-// // this tab should have a page-action.
-// chrome.runtime.sendMessage({
-//    from: 'content',
-//    subject: 'showPageAction',
-// });
+    //console.log('Websites :: ', await _storage.get(WEBSITES));
 
-// // Listen for messages from the popup.
-// chrome.runtime.onMessage.addListener((msg, sender, response) => {
-//    console.log("chrome.runtime.onMessage.addListener", msg, sender)
-//    // First, validate the message's structure.
-//    if ((msg.from === 'popup') && (msg.subject === 'TEST')) {
+    let state = await storage.get()
+    //console.log('State :: ', state);
+    let websites = state[WEBSITES]
+    //websites && setBodyId(websites)
 
-//       // Directly respond to the sender (popup), 
-//       // through the specified callback.
-//       response({ message: "Response from app" });
-//    }
-// });
+    //console.log('Location :: ', location);
+    //console.log('location.host', location.host);
 
+    // Initializing current website
+    if (location.host.includes('fiverr')) { fiverr() }
+    else if (location.host.includes('spotify')) { spotify.init() }
+    else if (location.host.includes('facebook')) { facebook() }
 
-// //const hosts = ['spotify', 'google', 'facebook', 'github', 'fiverr', 'youtube']
-// const hosts = store.state[POPUP].websites.filter(w => w.active).map(w => w.name.toLowerCase())
+    _storage.onChanged(WEBSITES, webs => {
+        //console.log('WEBSITES', webs);
+        syncTheme()
+    })
+}
 
-// console.log('hosts', hosts)
-
-// const currentHost = location.host
-
-
-// // Disable production-tip
-// Vue.config.productionTip = false;
-
-// // Create vue function
-// const createVueApp = (mountPoint, component, props = {}) => {
-//    console.log('createVueApp', mountPoint);
-//    new Vue({
-//       render: h => h(component, { props })
-//    }).$mount(mountPoint)
-// }
-
-
-// const sleep = ms => new Promise(res => setTimeout(() => res(), ms))
-// const hideSpotifyAdd = async () => {
-//    let hidden = false
-//    while (!hidden) {
-//       let adContainer = document.querySelector('._3c08e30e0b5018cc15edf990e21d3dc5-scss')
-//       if (adContainer) { adContainer.style.display = 'none'; hidden = true }
-//       await sleep(ONE_SECOND)
-//    }
-// }
-// if (currentHost.includes('spotify')) hideSpotifyAdd()
-
-// // Reload fiverr in every five minutes   
-// if (currentHost.includes('fiverr')) {
-
-//    setInterval(() => { location.reload() }, FIVE_MINUTE);
-
-//    // let loaderContainer = document.createElement('div')
-//    // loaderContainer.id = "rk-loader-container"
-//    // document.body.insertBefore(loaderContainer, document.getElementById('main-wrapper'))
-//    // createVueApp(loaderContainer, IntroLoader)
-
-//    // setInterval(() => {
-//    //    console.log("document.hidden", document.hidden)
-//    //    console.log("document.msHidden", document.msHidden)
-//    //    console.log("document.webkitHidden", document.webkitHidden)
-//    // }, 1000);
-
-
-//    // Set the name of the hidden property and the change event for visibility
-//    //var hidden, visibilityChange;
-//    // if (typeof document.hidden !== "undefined") {
-//    //    hidden = "hidden";
-//    //    visibilityChange = "visibilitychange";
-//    // } else if (typeof document.msHidden !== "undefined") {
-//    //    hidden = "msHidden";
-//    //    visibilityChange = "msvisibilitychange";
-//    // } else if (typeof document.webkitHidden !== "undefined") {
-//    //    hidden = "webkitHidden";
-//    //    visibilityChange = "webkitvisibilitychange";
-//    // }
-// }
+ready(init); // call init when ready

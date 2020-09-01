@@ -1,7 +1,7 @@
 <template>
 	<div class="home">
 		<perfect-scrollbar>
-			<flex-box cols="2" gap="1">
+			<flex-box wrap cols="2" gap="1">
 				<tool v-for="tool in tools" :key="tool.name" :tool="tool" class="pointer"></tool>
 			</flex-box>
 		</perfect-scrollbar>
@@ -21,12 +21,20 @@ export default {
 			{
 				name: 'Extensions',
 				icon: 'chrome',
-				to: '/extensions'
+				to: '/extensions',
+				color: '#55B24B'
 			},
 			{
 				name: 'Themes',
 				icon: 'feather',
-				to: '/themes'
+				to: '/themes',
+				color: '#9c27b0'
+			},
+			{
+				name: 'Facebook',
+				icon: 'facebook',
+				to: '/facebook',
+				color: '#4569B0'
 			}
 		]
 	}),

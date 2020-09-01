@@ -13,7 +13,9 @@
 					:type="theme === 'light' ? 'sun' : 'moon'"
 					@click="$emit('theme', theme === 'light' ? 'dark' : 'light')"
 				></feather>
-				<feather size="20" type="settings" class="ml-4"></feather>
+				<router-link to="/settings" tag="span" style="height: 20px">
+					<feather size="20" type="settings" class="ml-4"></feather>
+				</router-link>
 			</flex-box>
 		</flex-box>
 	</header>

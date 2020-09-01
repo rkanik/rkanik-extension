@@ -55,7 +55,7 @@ export default {
 			let webs = (await storage.get(WEBSITES)) || []
 			this.websites.forEach(w => {
 				let web = webs.find(web => web.name === w.name)
-				w.active = web.active
+				if( web ) w.active = web.active
 			})
 			this.loaded = true
 		},

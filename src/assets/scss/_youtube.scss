@@ -2,75 +2,99 @@
 $bgPrimary: #202124;
 $bgSecondary: #292a2d;
 
-// mixins
-@mixin shadow($color) {
-	box-shadow: 1px 2px 3px $color !important;
+html[rk-data-web="youtube"] {
+    #secondary {
+        padding-right: 0 !important;
+    }
+    #secondary-inner {
+        overflow-y: auto;
+        padding-right: 0.75rem;
+        height: calc(100vh - 8rem);
+        @include scrollbar($grey800, $grey700);
+    }
+    ytd-compact-video-renderer,
+    ytd-compact-radio-renderer {
+        background-color: #202020;
+        .details {
+            padding-top: 1rem;
+        }
+        yt-icon {
+            margin-top: 0.75rem;
+        }
+    }
 }
 
-ytd-masthead {
-	background-color: $bgSecondary !important;
-	@include shadow(#1c1d1f);
-	//box-shadow: 1px 2px 3px #1c1d1f !important;;
-}
-#primary {
-	background-color: #202124;
-	#contents {
-		ytd-rich-item-renderer {
-			background-color: $bgSecondary;
-			border-radius: 0.4rem;
-			overflow: hidden;
-			margin-bottom: 2rem !important;
-			box-shadow: 1px 2px 3px #1c1d1f;
-			#details {
-				padding: 0 1rem 1rem 1rem;
-			}
-			#metadata-line {
-				font-size: 1.2em !important;
-				color: #757575 !important;
-			}
-		}
-	}
-}
-#title {
-	text-transform: uppercase;
-	color: #37383b !important;
-}
-app-drawer {
-	#sections {
-		background-color: #262729;
-	}
-}
-ytd-rich-shelf-renderer {
-	border-bottom: none !important;
-}
-ytd-post-renderer {
-	background-color: #263238 !important;
-	border: none !important;
-	img {
-		border-radius: 50% !important;
-	}
-}
-ytd-watch-flexy {
-	background-color: $bgPrimary !important;
-	#primary {
-		min-width: unset !important;
-		max-width: unset !important;
-	}
-	#secondary {
-		background-color: #262729;
-		padding-left: 2rem;
-	}
-}
+html[rk-data-theme="disabled"][rk-data-web="youtube"] {
+    // mixins
+    @mixin shadow($color) {
+        box-shadow: 1px 2px 3px $color !important;
+    }
 
-// Video view sidebar boxes
-ytd-compact-video-renderer {
-	@include shadow($bgPrimary);
-	background-color: $bgSecondary !important;
-	&,
-	img {
-		border-radius: 0.3rem !important;
-	}
-	.details {
-		padding: 1rem 0 !important;
-	}
+    ytd-masthead {
+        background-color: $bgSecondary !important;
+        @include shadow(#1c1d1f);
+        //box-shadow: 1px 2px 3px #1c1d1f !important;;
+    }
+    #primary {
+        background-color: #202124;
+        #contents {
+            ytd-rich-item-renderer {
+                background-color: $bgSecondary;
+                border-radius: 0.4rem;
+                overflow: hidden;
+                margin-bottom: 2rem !important;
+                box-shadow: 1px 2px 3px #1c1d1f;
+                #details {
+                    padding: 0 1rem 1rem 1rem;
+                }
+                #metadata-line {
+                    font-size: 1.2em !important;
+                    color: #757575 !important;
+                }
+            }
+        }
+    }
+    #title {
+        text-transform: uppercase;
+        color: #37383b !important;
+    }
+    app-drawer {
+        #sections {
+            background-color: #262729;
+        }
+    }
+    ytd-rich-shelf-renderer {
+        border-bottom: none !important;
+    }
+    ytd-post-renderer {
+        background-color: #263238 !important;
+        border: none !important;
+        img {
+            border-radius: 50% !important;
+        }
+    }
+    ytd-watch-flexy {
+        background-color: $bgPrimary !important;
+        #primary {
+            min-width: unset !important;
+            max-width: unset !important;
+        }
+        #secondary {
+            background-color: #262729;
+            padding-left: 2rem;
+        }
+    }
+
+    // Video view sidebar boxes
+    ytd-compact-video-renderer {
+        @include shadow($bgPrimary);
+        background-color: $bgSecondary !important;
+        &,
+        img {
+            border-radius: 0.3rem !important;
+        }
+        .details {
+            padding: 1rem 0 !important;
+        }
+    }
 }

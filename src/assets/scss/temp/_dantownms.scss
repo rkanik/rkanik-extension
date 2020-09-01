@@ -1,0 +1,350 @@
+@mixin card-img-and-text {
+    img {
+        margin: 1rem 0 !important;
+    }
+    h5 {
+        font-size: 18px !important;
+        line-height: unset !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+//#RK_HOTFIX {
+    button.hamburger.bg-custom {
+        background-color: transparent !important;
+        .hamburger-inner {
+            &,
+            &::before,
+            &::after {
+                background-color: #000070 !important;
+            }
+        }
+    }
+
+    .app-header-right {
+        & .dropdown:first-child > a {
+            margin-top: 0.8rem !important;
+            i {
+                margin-left: 0 !important;
+                font-size: 1.5em !important;
+                color: #c9ced6 !important;
+            }
+        }
+        .dropdown img {
+            margin: 0 1rem;
+        }
+        .widget-subheading {
+            text-align: right !important;
+        }
+    }
+
+    .scrollbar-sidebar {
+        overflow-y: auto !important;
+    }
+
+    .app-sidebar__inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        .vertical-nav-menu:last-child {
+            position: unset !important;
+            right: unset !important;
+            bottom: unset !important;
+        }
+    }
+
+    .app-main__inner {
+        // Dashboard Main Content
+        & > .row:nth-of-type(3) {
+            // First Column
+            & > div:first-child {
+                // First and last row
+                & > .row {
+                    margin-bottom: 1rem !important;
+                    & > div:first-child {
+                        padding-right: 0 !important;
+                    }
+                    a {
+                        display: block !important;
+                        position: relative !important;
+                        height: 100% !important;
+                        @include card-img-and-text();
+                    }
+                    .card {
+                        height: 100% !important;
+                        margin-bottom: 0 !important;
+                    }
+                }
+
+                // Second row/card
+                & > a {
+                    display: block !important;
+                    .card {
+                        margin-bottom: 1rem !important;
+                        @include card-img-and-text();
+                    }
+                }
+            }
+        }
+    }
+
+    .vertical-nav-menu li a {
+        min-width: 2.4rem !important;
+    }
+
+    .main-card {
+        & > .row {
+            padding: 2rem !important;
+        }
+        .container-fluid {
+            & > .row {
+                padding: 2rem 1.5rem !important;
+                .card {
+                    margin: 0 !important;
+                }
+            }
+        }
+    }
+
+    .calculator-box,
+    .trade-details-box,
+    .trade-details-box {
+        margin: 0 !important;
+    }
+
+    // Settings
+    .user-balance-box {
+        .box-3 {
+            border-top-left-radius: 0 !important;
+            border-top-right-radius: 0 !important;
+        }
+    }
+    .main-card .card-body .nav.nav-tabs.nav-justified {
+        .nav-item {
+            flex-basis: unset !important;
+            flex-grow: unset !important;
+        }
+    }
+
+    .welcome-card {
+        display: flex;
+        background-image: url(https://i.ibb.co/q17Pprt/CARD-BG-2-X.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 0.5rem;
+        padding: 1.5rem 2.5rem;
+        position: relative;
+        margin-bottom: 2rem;
+
+        &--content,
+        &--actions {
+            flex: 1;
+        }
+
+        &--heading {
+            color: white;
+            font-weight: normal;
+            font-size: 34px;
+            margin-bottom: 1.5rem;
+        }
+
+        &--desc {
+            margin: 0 !important;
+            color: #eeeeee;
+            font-size: 1.2em;
+        }
+
+        &--actions {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        &--close {
+            position: absolute;
+            top: 0.75rem;
+            right: 1rem;
+            height: 0.8rem;
+            width: 0.8rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            height: 54px;
+            width: 280.54px;
+            font-size: 24px;
+        }
+
+        .btn-pill {
+            border-radius: 2rem;
+        }
+
+        .btn-yellow {
+            color: white;
+            margin-right: 1rem;
+            border-color: #ffb800;
+            background-color: #ffb800;
+            transition: background-color 0.3s ease-in-out;
+            &:hover {
+                border-color: #d89b00;
+                background-color: #d89b00;
+            }
+        }
+
+        .btn-white {
+            color: #000070;
+            border-color: white;
+            background-color: white;
+            transition: background-color 0.3s ease-in-out;
+            &:hover {
+                border-color: #eeeeee;
+                background-color: #eeeeee;
+            }
+        }
+    }
+
+    // Calculator box
+    .calculator-box {
+        label {
+            font-size: 0.95em !important;
+            margin-bottom: 0.2rem !important;
+            margin-left: 1rem !important;
+        }
+        input {
+            border-radius: 0 !important;
+            &::placeholder {
+                color: #e0e0e0 !important;
+            }
+        }
+
+        #sell-trade,
+        #buy-trade {
+            background-color: #4f4f9a !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            cursor: pointer !important;
+            &.bg-custom-accent {
+                background-color: #00b9cd !important;
+            }
+        }
+    }
+
+    #rate-form .d-flex.p-0.my-2.bg-custom.rounded {
+        margin-bottom: 1rem !important;
+    }
+
+    .trade-details-box {
+        button {
+            background-color: #3f3f93 !important;
+        }
+    }
+
+    .modal-header {
+        align-items: unset !important;
+        button.close {
+            height: 2rem !important;
+            width: 2rem !important;
+            min-width: 2rem !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            background-color: #aeaeae !important;
+            color: white !important;
+            opacity: 1 !important;
+            text-shadow: none !important;
+            line-height: 1.5rem !important;
+            font-weight: 300 !important;
+        }
+    }
+    .modal-dialog {
+        box-shadow: none !important;
+    }
+    .modal-backdrop {
+        background-color:rgba(0, 0, 0, 0.75);
+    }
+
+    @media screen and (max-width: 1366px) {
+        .welcome-card {
+            &--heading {
+                font-size: 1.5em !important;
+            }
+            &--desc {
+                font-size: 1em !important;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1599px) {
+        .welcome-card .btn {
+            height: unset;
+            width: unset;
+            font-size: 0.95em;
+            padding: 0.5rem 3rem;
+        }
+    }
+
+    @media screen and (max-width: 991px) {
+        .welcome-card {
+            display: block;
+            &--content {
+                margin-bottom: 2rem;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .calculator-box,
+        .trade-details-box,
+        .trade-details-box {
+            margin-bottom: 2rem !important;
+        }
+        .welcome-card--heading {
+            font-size: 1.2em !important;
+        }
+        .welcome-card--desc {
+            font-size: 0.95em !important;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        .main-card {
+            & > .row {
+                padding: 2rem !important;
+            }
+            .container-fluid {
+                & > .row > div {
+                    width: 100% !important;
+                    flex: unset !important;
+                    max-width: unset !important;
+                }
+            }
+        }
+        .welcome-card {
+            padding: 2rem;
+            .btn {
+                padding: 0.4rem 1.5rem;
+            }
+            .btn-yellow {
+                margin-right: 0.5rem;
+            }
+        }
+    }
+
+    @media screen and (max-width: 360px) {
+        .welcome-card {
+            padding: 1rem !important;
+            .btn {
+                margin: 0.5rem 0;
+            }
+        }
+    }
+//}
+
+body.modal-open {
+    .app-header,
+    .app-main {
+        filter: blur(6px) !important;
+    }
+}

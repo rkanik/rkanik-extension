@@ -1,5 +1,5 @@
 <template>
-	<div class="flex-box" :class="classes">
+	<div class="flex-box" :class="classes" @click="$emit('click')">
 		<slot></slot>
 	</div>
 </template>
@@ -12,6 +12,10 @@ export default {
 		gap: {
 			type: String | Number,
 			default: 0
+		},
+		wrap: {
+			type: Boolean,
+			default: false
 		},
 		justifyCenter: {
 			type: Boolean,
@@ -57,7 +61,8 @@ export default {
 				'align-start': this.alignStart,
 				'align-end': this.alignEnd,
 				['cols-' + this.cols]: this.cols,
-				['gap-' + this.gap]: this.gap !== 0
+				['gap-' + this.gap]: this.gap !== 0,
+				'wrap': this.wrap
 			}
 		}
 	},
@@ -67,6 +72,9 @@ export default {
 <style lang='scss' scoped>
 	.flex-box {
 		display: flex;
+		&.wrap {
+			flex-wrap: wrap;
+		}
 	}
 	.flex-row {
 		flex-direction: row;
@@ -95,9 +103,9 @@ export default {
 	.align-end {
 		align-items: flex-end;
 	}
-	.cols-2 {
+	.cols-2.gap-1 {
 		& > div {
-			width: 50%;
+			width: 47.67%;
 		}
 	}
 	.gap-1 {
