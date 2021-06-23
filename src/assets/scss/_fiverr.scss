@@ -3,34 +3,10 @@
 @import "./inc/colors";
 
 // mixins
-@mixin shadow($color) {
-    box-shadow: 1px 2px 3px $color !important;
-}
-@mixin box {
-    background-color: $bgSecondary !important;
-    border: none !important;
-    border-radius: 0.3rem !important;
-}
-@mixin cardTitle {
-    color: $textPrimary !important;
-    text-decoration: none;
-    font-size: 1em !important;
-    padding: 0.5rem 0.8rem 1rem 0.8rem !important;
-    margin: 0 !important;
-    height: 56px !important;
-    line-height: unset !important;
-    &:hover {
-        color: $green !important;
-    }
-}
-@mixin userName {
-    color: $textPrimary !important;
-    text-transform: uppercase !important;
-    letter-spacing: 4px !important;
-}
 
 html[rk-data-theme="dark"][rk-data-web="fiverr"] {
     @import "./websites/fiverr/inbox";
+    @import "./websites/fiverr/balance";
 
     body {
         overflow-x: hidden;
@@ -170,8 +146,8 @@ html[rk-data-theme="dark"][rk-data-web="fiverr"] {
             background-color: unset !important;
         }
     }
-    .fiverr-header .site-logo {
-        background-image: url("https://i.ibb.co/C69CwvS/fiverr-logo.png") !important;
+    .fiverr-header .site-logo svg g:first-child {
+        fill: #1dbf73 !important;
     }
     nav.fiverr-nav {
         a.nav-link,
@@ -313,11 +289,14 @@ html[rk-data-theme="dark"][rk-data-web="fiverr"] {
                     }
                 }
                 tr.mygigs-statistics {
-                    td {
-                        background-color: unset !important;
-                    }
+                    // td {
+                    //     background-color: unset !important;
+                    // }
                     &:hover {
-                        background-color: $bgSecondary !important;
+                        //background-color: $bgSecondary !important;
+                        td {
+                            background-color: $bgSecondary !important;
+                        }
                     }
                     .gig-extra-area,
                     .gig-extra-area-section,
@@ -727,4 +706,43 @@ html[rk-data-theme="dark"][rk-data-web="fiverr"] {
             }
         }
     }
+}
+
+body.pro-experience .db-new-main-table table tbody tr:hover td {
+    background-color: rgba(29, 191, 115, 0.733) !important;
+    &.amount .money-in {
+        color: white;
+    }
+}
+
+.revenues-actions .csv-export {
+    color: #1dbf73 !important;
+}
+.popover-notifications-drawer .drawer-item.read {
+    background: #424242 !important;
+}
+.popover-notifications-drawer .drawer-item:not(:last-child) {
+    border-color: #494949 !important;
+}
+.popover-notifications-drawer .drawer-item .main-action {
+    color: white !important;
+}
+.popover-notifications-drawer .wrapper {
+    overflow: hidden !important;
+}
+.popover-notifications-drawer .scroll-wrapper {
+    margin-right: -18px;
+}
+.toggler-popover aside {
+    border: none !important;
+}
+.popover-notifications-drawer .tab-switch {
+    color: white !important;
+    background: $fGreen !important;
+}
+.popover-notifications-drawer .drawer-item {
+    background: rgb(80, 80, 80) !important;
+}
+.popover-notifications-drawer .drawer-item:hover {
+    background-color: $fGreen !important;
 }

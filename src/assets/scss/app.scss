@@ -1,14 +1,16 @@
 @import "./inc/colors";
 @import "./inc/themes";
 
+@import "./variables/variables";
 @import "./mixins/mixins";
 
 // Scrollbar
 @import "./inc/scrollbar";
 
 // Website styles
+//@import "./google.scss";
 @import "./youtube";
 @import "./fiverr";
-@import "./github";
+//@import "./github";
 @import "./facebook";
 //@import "./temp/dantownms";

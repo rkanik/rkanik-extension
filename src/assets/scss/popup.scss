@@ -12,6 +12,10 @@
 // Reset
 @import "./reset/reset";
 
+.el-card__body {
+    transition: all 0.3s ease-in-out;
+}
+
 .flex {
     display: flex;
     &.justify-end {

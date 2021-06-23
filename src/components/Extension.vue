@@ -1,24 +1,44 @@
 <template>
-	<el-card class="extension-card shadow-1">
-		<el-row :gutter="16" class="mb-4">
+	<el-card
+		class="extension-card shadow-1"
+		:body-style="{ padding: expanded ? '20px' : '10px' }"
+		:class="{ expanded }"
+	>
+		<el-row :gutter="16" :class="{ 'mb-4': expanded }">
 			<el-col :span="3">
-				<el-image class="extension-card--image" v-if="ext.icons.length" :src="getIcon(ext.icons)"></el-image>
+				<el-image
+					class="extension-card--image"
+					v-if="ext.icons.length"
+					:src="getIcon(ext.icons)"
+				></el-image>
 			</el-col>
 			<el-col :span="16">
 				<h3 class="extension-card--name">
-					{{ext.name}}
-					<span class="extension-card--version">{{ext.version}}</span>
+					{{ ext.name }}
+					<span class="extension-card--version">{{ ext.version }}</span>
 				</h3>
-				<p class="extension-card--desc">{{ext.description}}</p>
+				<p v-if="expanded" class="extension-card--desc">
+					{{ ext.description }}
+				</p>
 			</el-col>
 			<el-col :span="5">
 				<flex-box justifyEnd>
-					<rk-switch size="small" v-model="ext.enabled" @change="v => $emit('change',{id:ext.id, value:v})" />
-					<!-- <feather type="trash" size="20" class="fix-stroke"></feather> -->
+					<rk-switch
+						size="small"
+						v-model="ext.enabled"
+						@change="(v) => $emit('change', { id: ext.id, value: v })"
+					/>
 				</flex-box>
 			</el-col>
 		</el-row>
-		<el-button type="danger" size="mini" @click="$emit('delete', ext.id)" plain>Delete</el-button>
+		<el-button
+			plain
+			size="mini"
+			type="danger"
+			v-if="expanded"
+			@click="$emit('delete', ext.id)"
+			>Delete</el-button
+		>
 	</el-card>
 </template>
 
@@ -33,7 +53,8 @@ export default {
 		ext: {
 			type: Object,
 			required: true
-		}
+		},
+		expanded: Boolean
 	},
 	methods: {
 		getIcon(icons) {
@@ -65,6 +86,11 @@ export default {
 		}
 		&--version {
 			font-size: 0.7em !important;
+		}
+		&.expanded {
+			.extension-card--name {
+				margin-bottom: 0;
+			}
 		}
 	}
 </style>

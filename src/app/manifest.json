@@ -21,7 +21,8 @@
                 "https://www.youtube.com/*",
                 "https://www.fiverr.com/*",
                 "http://slither.io/",
-                "https://www.user.dantownms.com/*"
+                "https://www.user.dantownms.com/*",
+                "http://media.dfnbd.net/"
             ],
             "js": [
                 "app.js"

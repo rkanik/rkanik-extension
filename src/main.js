@@ -4,7 +4,6 @@ import store from "./store"
 import router from './router'
 
 import VueFeather from 'vue-feather';
-console.log(VueFeather);
 Vue.use(VueFeather);
 
 // Plugins

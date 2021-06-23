@@ -2,6 +2,7 @@
 import fiverr from "../web/fiverr"
 import spotify from "../web/spotify"
 import facebook from "../web/facebook"
+import dfn from '../web/dfn'
 
 // Chrome storage
 import _storage from '../chrome/_storage'
@@ -61,10 +62,7 @@ const syncTheme = async () => {
 
 const init = async () => {
 
-    console.clear()
-    console.log('Initialized :: ', chrome);
-    console.log('Document ready :: ', document);
-
+    //console.clear()
     syncTheme()
 
     //console.log('Websites :: ', await _storage.get(WEBSITES));
@@ -81,6 +79,7 @@ const init = async () => {
     if (location.host.includes('fiverr')) { fiverr() }
     else if (location.host.includes('spotify')) { spotify.init() }
     else if (location.host.includes('facebook')) { facebook() }
+    else if (location.host.includes('dfnbd')) { dfn.init() }
 
     _storage.onChanged(WEBSITES, webs => {
         //console.log('WEBSITES', webs);
